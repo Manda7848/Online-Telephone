@@ -1,3 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Special+Elite&display=swap');
+
+
 * {
     box-sizing: border-box;
+ font-family: "Special Elite", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+#intro1, #intro2{
+  align-self: center;
+    height: 600px;
+    width: 600px;
+    -webkit-user-drag: none;
+}
+
+body {
+    background-color: #e1cef3;
+}
+#intro2{
+display: none;
+
+}
+
+#commence{
+display: none;
+z-index: 1000;
+border-radius: 300px;
+box-shadow: #000000 3px 3px;
+color: white;
+background-color:#3e0c70;
+
+}
+
+a{ 
+    color: white;
+    text-decoration: none;
 }
