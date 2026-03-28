@@ -39,7 +39,7 @@ function transition() {
 
 
 var n = 0;
-var dots = "......."
+var dots = "...................."
 var timed = setInterval(dots1, 100);
 
 
@@ -48,8 +48,8 @@ function dots1() {
 var dotted = document.getElementById("dots");
 
 
-if (next[n]) {
-dotted.innerHTML += next[n];
+if (dots[n]) {
+dotted.innerHTML += dots[n];
 n++;
 console.log(dots);
 
@@ -90,7 +90,7 @@ instructions();
 
 setTimeout(() => {
 sheet.classList.add("up");
-
+whoosh.play(); 
 setTimeout(() =>{
 main.classList.remove("cannotclick");
 console.log("Javascript did not break");
