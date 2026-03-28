@@ -55,3 +55,20 @@ I hqave to use boring naming conventions so that it actually works ughgggggg. I 
 apparently, i have to write backend. ugh
 
 I need a favicon, instructions, and phone
+
+
+Why does commenting a comment in js stack and not reverse the comment like other languages
+
+THE whoosh sound effect is too long
+
+i finna just crop the clip
+
+
+
+IF ONLY IT WAS IN A FORMAT WINDOWS 10 NATIVELY SUPPORTS
+
+oh wait, windows supports it, heh
+
+loading screen cus i forgot to introduce the game
+
+had to add id to the main

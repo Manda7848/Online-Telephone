@@ -1,24 +1,72 @@
 window.onload = () => {
 
 function instructions() {
-document.getElementById("intro1").onclick = show;
+document.getElementById("intro1").onclick = transition;
 }
- function show() {
-document.getElementById("intro2").style.display = "flex"; 
+ const sheet = document.getElementById("sheet");
+ const main = document.getElementById("main");
+var whoosh = new Audio("./whoosh-sounds-effects-no-copyright.wav");
+//  function show() {
+// document.getElementById("intro2").style.display = "flex"; 
 
-document.getElementById("intro1").style.display = "none"; 
-document.getElementById("click").style.display = "none"; 
-document.getElementById("commence").style.display = "flex";
- }
+// document.getElementById("intro1").style.display = "none"; 
+// document.getElementById("click").style.display = "none"; 
+// document.getElementById("commence").style.display = "flex";
+// transition();
+//  }
 
-instructions();
+
+function transition() {
+    var i1 = document.getElementById("intro1");
+    var i2 = document.getElementById("intro2");
+    var click = document.getElementById("click");
+    var commence = document.getElementById("commence");
+
+    i1.classList.add("invisible"); 
+    click.classList.add("invisible");
+     whoosh.play(); 
+    setTimeout( () => {
+        i1.style.display = "none"; 
+        i2.style.display = "flex";
+          commence.style.display= "flex";
+        click.style.display = "none";
+      
+       
+    }, 300); 
+}
 
 
-// ALL FOR Animation. WHY IS THERE NO BUILT IN FEATURE!?
+
+
+var n = 0;
+var dots = "......."
+var timed = setInterval(dots1, 100);
+
+
+
+function dots1() {
+var dotted = document.getElementById("dots");
+
+
+if (next[n]) {
+dotted.innerHTML += next[n];
+n++;
+console.log(dots);
+
+
+
+} else{   clearInterval(timed);}
+
+
+}
 
 var i = 0;
 var next = "Click To Proceed......"
-var time = setInterval(write, 100);
+var time = setInterval(write, 200);
+
+
+dots1();
+
 
 function write() {
 var target = document.getElementById("click");
@@ -36,7 +84,29 @@ console.log(target);
 
 }
 
+instructions();
+
+
+
+setTimeout(() => {
+sheet.classList.add("up");
+
+setTimeout(() =>{
+main.classList.remove("cannotclick");
+console.log("Javascript did not break");
+sheet.style.display = "none";
+
+}, 1500);
+
 write();
+
+}, 2000);
+
+// ALL FOR Animation. WHY IS THERE NO BUILT IN FEATURE!?
+
+
+
+
 
 
 }

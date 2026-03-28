@@ -3,17 +3,53 @@
 
 * {
     box-sizing: border-box;
- font-family: "Special Elite", system-ui;
-  font-weight: 400;
-  font-style: normal;
+ 
 }
 
+body{
+font-family: "Special Elite", system-ui;
+  font-weight: 400;
+  font-style: normal;
 
+}
+
+#sheet{
+    font-family: 'Orbitron' , sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  background-color: #3e0c70;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+   justify-content: center;
+   align-items: center;
+     transition: transform 1s ease ;
+     pointer-events: all;
+     color: white;
+     font-size: 2rem;
+}
+
+.sheet-up{
+    transform: translateY(-100%);
+    pointer-events: none;
+}
 #intro1, #intro2{
   align-self: center;
     height: 600px;
     width: 600px;
     -webkit-user-drag: none;
+    transition: opacity 1s ease;
+}
+
+.invisible {
+    opacity: 0;
+}
+.cannotclick{
+    pointer-events: none;
+    user-select: none;
 }
 
 body {
@@ -35,7 +71,20 @@ box-shadow: #000000 3px 3px;
 color: white;
 background-color:#3e0c70;
 margin-left: 160px;
+font-size: 2rem;
+ padding: 10px;
+transition: opacity 0.2s ease;
+font-family: "Special Elite", system-ui;
+  font-weight: 400;
+  font-style: normal;
 
+}
+
+#commence:hover{
+border: black solid 3px;
+box-shadow:#3e0c70 10px 10px;
+color: black;
+background-color:white;
 }
 
 #click::after {
