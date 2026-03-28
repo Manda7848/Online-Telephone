@@ -18,23 +18,51 @@
 
 body {
     background-color: #e1cef3;
+    
 }
 #intro2{
 display: none;
+
 
 }
 
 #commence{
 display: none;
 z-index: 1000;
-border-radius: 300px;
+border-radius: 50px;
+border: white solid 3px;
 box-shadow: #000000 3px 3px;
 color: white;
 background-color:#3e0c70;
+margin-left: 160px;
 
 }
 
 a{ 
     color: white;
     text-decoration: none;
+    font-size: 2rem;
+    padding: 10px;
+}
+
+
+#click{
+padding-right: 160px;
+
+}
+
+#fone{
+width: 400px;
+height: 600px;
+align-self: center;
+justify-self: center;
+
+
+}
+
+.align{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
