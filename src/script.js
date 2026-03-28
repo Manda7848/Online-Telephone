@@ -18,7 +18,7 @@ instructions();
 
 var i = 0;
 var next = "Click To Proceed......"
-var time = setInterval(write, 70);
+var time = setInterval(write, 100);
 
 function write() {
 var target = document.getElementById("click");
