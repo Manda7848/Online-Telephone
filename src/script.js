@@ -14,4 +14,29 @@ document.getElementById("commence").style.display = "flex";
 instructions();
 
 
+// ALL FOR Animation. WHY IS THERE NO BUILT IN FEATURE!?
+
+var i = 0;
+var next = "Click To Proceed......"
+var time = setInterval(write, 70);
+
+function write() {
+var target = document.getElementById("click");
+
+
+if (next[i]) {
+target.innerHTML += next[i];
+i++;
+console.log(target);
+
+
+
+} else{   clearInterval(time);}
+
+
+}
+
+write();
+
+
 }
