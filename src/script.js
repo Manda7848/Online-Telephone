@@ -23,7 +23,7 @@ document.getElementById("commence").onclick = () => {
     whoosh.play(); 
 
     setTimeout(() => {
-         change("./game.html");
+         change("./lobby.html");
     }, 250)
 }
 
@@ -46,7 +46,8 @@ function transition() {
 
     i1.classList.add("invisible"); 
     click.classList.add("invisible");
-    
+   
+       
     setTimeout( () => {
         i1.style.display = "none"; 
         i2.style.display = "flex";
@@ -84,8 +85,8 @@ console.log(dots);
 
 var i = 0;
 var next = "Click To Proceed......"
-var time = setInterval(write, 200);
 
+var time = setInterval(write, 450);
 
 dots1();
 

@@ -72,3 +72,13 @@ oh wait, windows supports it, heh
 loading screen cus i forgot to introduce the game
 
 had to add id to the main
+
+Don't you just love how developer friendly google tools are?(a hint of sarcasm but fr, they are so nice)
+
+
+
+WELL NOW, IK HOW TO MAKE A CHAT APP USING FIREBASE DATABASE
+
+for now, I need to make a lobby login page
+
+then manage the states.
