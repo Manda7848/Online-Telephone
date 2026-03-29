@@ -19,12 +19,12 @@ const change = (newUrl) => {
 
 
 document.getElementById("commence").onclick = () => {
-    change("./game.html");
+    
     whoosh.play(); 
 
     setTimeout(() => {
          change("./game.html");
-    }, 2000)
+    }, 250)
 }
 
 
