@@ -1,3 +1,7 @@
+
+
+
+
 window.onload = () => {
 
 function instructions() {
@@ -6,6 +10,20 @@ document.getElementById("intro1").onclick = transition;
  const sheet = document.getElementById("sheet");
  const main = document.getElementById("main");
 var whoosh = new Audio("./whoosh-sounds-effects-no-copyright.wav");
+
+
+
+const change = (newUrl) => {
+  window.location.href = newUrl;
+}
+
+
+document.getElementById("commence").onclick = () => {
+    change("./game.html");
+}
+
+
+
 //  function show() {
 // document.getElementById("intro2").style.display = "flex"; 
 
