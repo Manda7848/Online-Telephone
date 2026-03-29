@@ -9,7 +9,7 @@ document.getElementById("intro1").onclick = transition;
 }
  const sheet = document.getElementById("sheet");
  const main = document.getElementById("main");
-var whoosh = new Audio("./whoosh-sounds-effects-no-copyright.wav");
+var whoosh = new Audio("./videoplayback_[cut_0sec].wav");
 
 
 
@@ -20,8 +20,12 @@ const change = (newUrl) => {
 
 document.getElementById("commence").onclick = () => {
     change("./game.html");
-}
+    whoosh.play(); 
 
+    setTimeout(() => {
+         change("./game.html");
+    }, 2000)
+}
 
 
 //  function show() {
@@ -42,13 +46,13 @@ function transition() {
 
     i1.classList.add("invisible"); 
     click.classList.add("invisible");
-     whoosh.play(); 
+    
     setTimeout( () => {
         i1.style.display = "none"; 
         i2.style.display = "flex";
           commence.style.display= "flex";
         click.style.display = "none";
-      
+       whoosh.play(); 
        
     }, 300); 
 }
@@ -57,7 +61,7 @@ function transition() {
 
 
 var n = 0;
-var dots = "...................."
+var dots = "........................................"
 var timed = setInterval(dots1, 100);
 
 
@@ -108,15 +112,21 @@ instructions();
 
 setTimeout(() => {
 sheet.classList.add("up");
-whoosh.play(); 
+
 setTimeout(() =>{
 main.classList.remove("cannotclick");
 console.log("Javascript did not break");
 sheet.style.display = "none";
-
+ whoosh.play();
 }, 1500);
 
+
+setTimeout(() => {
 write();
+
+console.log("the sound played");
+}, 10000)
+
 
 }, 2000);
 
