@@ -23,7 +23,23 @@ console.log("Your room id is =", id);
 document.getElementById("id2").innerText = id;
 }
 
-setInterval (document.getElementById("id1").innerText = document.getElementById("room").innerText, 1000);
+
+// document.getElementById("room").addEventListener('input', function() {
+// document.getElementById("id1").innerText = document.getElementById("room").value
+
+
+// } )
+
+
+
+document.getElementById("room").addEventListener('input', changeid);
+
+function changeid(){
+document.getElementById("id1").innerText = document.getElementById("room").value
+}
+
+
+// setInterval (function () { document.getElementById("id1").innerText = document.getElementById("room").value; console.log("interval is working"); }, 1000);
 
 
 }
