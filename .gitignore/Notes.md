@@ -82,3 +82,6 @@ WELL NOW, IK HOW TO MAKE A CHAT APP USING FIREBASE DATABASE
 for now, I need to make a lobby login page
 
 then manage the states.
+
+somehow messe dup and made my .vercel file public
+heh
