@@ -10,17 +10,21 @@ window.onload = () => {
 
 
 let id = 0
- const join = document.getElementById("join");
+ const create = document.getElementById("create");
 
-join.onclick = console.log("Join was clicked");
-join.onclick = generateid;
+create.onclick = console.log("Join was clicked");
+create.onclick = generateid;
 
 
 function generateid() {
 id = Math.floor(Math.random() * 500) + 1000;
 console.log("Your room id is =", id);
-document.getElementById("id").innerText = id;
-
+// document.getElementById("id1").innerText = id;
+document.getElementById("id2").innerText = id;
 }
+
+setInterval (document.getElementById("id1").innerText = document.getElementById("room").innerText, 1000);
+
+
 }
 
