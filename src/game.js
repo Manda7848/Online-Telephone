@@ -26,7 +26,8 @@ const database = firebase.database();
 let id = 0
  const create = document.getElementById("create");
 
-create.onclick = console.log("Join was clicked");
+create.onclick = console.log("Join was initialized");
+// No, cus why are my onclick functions just refusing to work
 create.onclick = generateid;
 
 
@@ -35,7 +36,26 @@ id = Math.floor(Math.random() * 500) + 1000;
 console.log("Your room id is =", id);
 // document.getElementById("id1").innerText = id;
 document.getElementById("id2").innerText = id;
+
+
+database.ref('rooms/' + id).set ({
+status: "waiting",
+exists: true
+
+}).then(() => {
+console.log("Firebase received your data!");
+document.getElementById("canjoin").innerText = "You can join room "+ id + " now!" ;
+
+}).catch((error) => {
+console.log("That didn't work for some reason");
+
+});
 }
+
+
+
+
+
 
 
 // document.getElementById("room").addEventListener('input', function() {
@@ -49,7 +69,7 @@ document.getElementById("id2").innerText = id;
 document.getElementById("room").addEventListener('input', changeid);
 
 function changeid(){
-document.getElementById("id1").innerText = document.getElementById("room").value
+document.getElementById("id1").innerText = document.getElementById("room").value;
 }
 
 // I'm scared, my wakatime time keeps increasing even though i dont type anything
@@ -58,5 +78,21 @@ document.getElementById("id1").innerText = document.getElementById("room").value
 // setInterval (function () { document.getElementById("id1").innerText = document.getElementById("room").value; console.log("interval is working"); }, 1000);
 
 
+
+// FROM HERE ONWARDS, JOIN LOGIC
+let username = document.getElementById("name");
+username.addEventListener('input', logname);
+
+function logname(){
+ console.log(username.value);
+
+}
+// setInterval( () => {console.log(username) }, 1000);
+let room = document.getElementById("room");
+document.getElementById("room").addEventListener('input', logid);
+function logid() {
+  console.log(room.value);
+}
+ 
 }
 

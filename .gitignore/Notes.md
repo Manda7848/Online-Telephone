@@ -83,5 +83,11 @@ for now, I need to make a lobby login page
 
 then manage the states.
 
-somehow messe dup and made my .vercel file public
+somehow messed up and made my .vercel file public
 heh
+
+
+OK so now, i am trying to understand firebase logic which is so confusing,
+
+
+NEXT COMMIT MESSAGE IS: BUT I DIGRESS, THERE IS PROGRESS
