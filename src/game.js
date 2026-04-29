@@ -93,6 +93,135 @@ document.getElementById("room").addEventListener('input', logid);
 function logid() {
   console.log(room.value);
 }
- 
+
+
+
+const join = document.getElementById("join");
+
+join.onclick = function() {
+console.log("Join was clicked");
+// if room.value or name.value = "", alert "fill in both fields first!"
+
+let roomid = document.getElementById("room").value;
+let name = document.getElementById("name").value;
+
+if(roomid === "" || name === "") {
+alert("FILL IN BOTH FIELDS FIRST!");
+return;
+
 }
 
+database.ref('rooms/' + roomid ).once('value').then((snapshot) => {
+if (snapshot.exists()) {
+database.ref('rooms/' + roomid + '/players').push({
+name: name,
+joined: Date.now()
+
+}).then(() => {
+
+window.location.href = "game.html?room=" + roomid;
+
+});
+
+
+} else {
+alert("Please enter a room code that actually exists!")
+
+}
+
+
+});
+
+}
+
+
+
+ 
+
+// Idea, make tic tac Toe, apotify for web is so buggy but the pc app is refusing to respong, probably breaking so amny coding conventions by putting these comments here but notes.md is a mess
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
