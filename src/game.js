@@ -115,11 +115,17 @@ database.ref('rooms/' + roomid ).once('value').then((snapshot) => {
 if (snapshot.exists()) {
 database.ref('rooms/' + roomid + '/players').push({
 name: name,
-joined: Date.now()
+joined: Date.now(),
+ready: false
 
-}).then(() => {
+}).then((snap) => {
 
-window.location.href = "game.html?room=" + roomid;
+  sessionStorage.setItem("playerKey", snap.key);
+  console.log(snap.key);
+  setTimeout(() => {
+    window.location.href = "game.html?room=" + roomid;
+  }, 250);
+
 
 });
 
