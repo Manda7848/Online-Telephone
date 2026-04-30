@@ -91,3 +91,4 @@ OK so now, i am trying to understand firebase logic which is so confusing,
 
 
 NEXT COMMIT MESSAGE IS: BUT I DIGRESS, THERE IS PROGRESS
+If you haven't been able to tell yet, I love using console.log. It's about the only js function I don't need to seach online for to know how to use. That and alert
