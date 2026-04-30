@@ -5,6 +5,12 @@ window.onload = () => {
 //CURRENT LOGIC, MAKE AN ARRRAY CALLED PLAYERKEYS WHICH FETHEC THE PLAYER KEYS WHEN THE ROOM STATUS IS PLAYING, PICK WHICH PLAYER IS DESRIBER 1 THEN DESCRIBER 2 THEN DESRIBER 3 THEN GUESSER
 //I STILL NEED TO DECIDE IF I MAKE THE GAME A FIXED LENGTH OR IF I TRY TO MAKE IT INCLUSIVE, MAKING IT INCLUSIVE WOULD BE HARDER SO WHY NOT
 //YEAH, SO FAR SO GOOD, I HOPE, STILL NEED TO WORK ON THE FORBIDDEN WORD LIST, YEAH IL ALERT THE DESRIBER IF THEIR THING HAS A FORBIDDEN WORD, PRETTY MUCH PARSE THEIR DESCRIPTION AS SEOARATE WORDS IN AN ARRAYM IF IT CONTAINS ANY OF THE FORBIDDEN WORDS,(MEHN JUST TRANSFORM THE WORDS TO ALLCAPS TO MAKE IT EASY AND DELETE WHITESPACE), IF IT DOESN, ALERT THEN RETURN,. SIMPLE IN THEORY
+//should i add a twist that your description cnanot be very long?, nah that would just be mean,
+//YES, I AM USING THE TOP OF MY CODE TO BRAINSTORM, THE NOTES FILE IS TOO UNSERIOUS TO PUT A TODO LIST IN AND STICKY NOTES WOULD CRASH MY COMPUTER
+//DO GITHUB REPOS HAVE SEO BY DEFAULT?(I LOVE LEAVING CAPSLOCK ON EVEN THOUGH IT IT THE EQUIVALENT OF DIGITAL SCREAMING)
+//ooh, loading screen with tips like. if youre playing online telephone with your close friends, try desribing the word in a way that it links to a shared experience, it makes it really fun. like for pizza you could say "that one thing Anns was craving when she got her wisdom teeth out"
+//i just thought about adding play again logic but nah for the appreciatioon message "Thank you for playing online telephone, to lay again, kindly make another room and join, play again logic and having players leave and new players join is too complex, thats what prjsk does"
+//also, thank you for playing, I MIGHT allow people to join random waittttt nvm, trolls would just eat that up
 const firebaseConfig = {
   apiKey: "AIzaSyA9SwtBw1A0t49YYqajQIPGK8Kx9ts7oTE",
   authDomain: "online-telephone-7848.firebaseapp.com",
@@ -21,132 +27,84 @@ const database = firebase.database();
 //WORD LIST AT THE TOP
 const words = [
 { word: "IPHONE",
-    forbidden: ["APPLE", "PHONE", "SCREEN", "STEVE JOBS", "APP"]
+    forbidden: ["APPLE", "PHONE", "SCREEN", "STEVE JOBS", "APP", "YOU"]
 
 },
 
 {
-word:
-forbidden: []
+word: "PIZZA",
+forbidden: ["CHEESE", "ITALY", "DOUGH", "DELIVERY", "PEPPERONI", "SLICE", "PARTY"]
 
 },
 
 {
-word:
-forbidden: []
-
-},
-
-
-{
-word:
-forbidden: []
+word: "SPIDERMAN",
+forbidden: ["MARVEL", "WEB", "PETER PARKER", "TOM HOLLAND", "ANDREW GARFIELD", "TOBEY MAGUIRE", "HERO","AVENGERS", "TONY STARK", "AUNT MAY", "UNCLE BEN", "SPIDER", "MAN"]
 
 },
 
 
 {
-word:
-forbidden: []
+word: "BLACK PANTHER",
+forbidden: ["BLACK", "PANTHER", "SHURI", "T'CHALA", "PRINCE", "CLAW", "KILLMONGER", "WAKANDA", "AFRICA", "VIBRANIUM"]
 
 },
 
 
 {
-word:
-forbidden: []
-
+word:"TOP GUN",
+forbidden: ["PLANES", "ETHAN HUNT", "ROOSTER", "GOOSE", "PLANES", "WAR", "DOGFIGHTING","BUNKER"]
+//They'll never be able to guess this one correctly
 },
 
 
 {
-word:
-forbidden: []
-
+word:"MINECRAFT",
+forbidden: ["STEVE", "CHICKEN JOCKEY", "CREEPER", "ZOMBIE", "SKELETON", "RUEBEN", "BLOCKS", "BUILDING","MINING", "NETHER", "MOBS", "FLYING", "CREATIVE MODE"]
+//Rip Rueben, Minecraft story mode made me cry
 },
 
 
 {
-word:
-forbidden: []
+word: "SPOTIFY",
+forbidden: ["WRAPPED", "MUSIC", "DJ", "BEST", "PLAYLIST", "ARTIST", "STREAMING","GREEN"]
+//Terrible we player that is making me code in silence
+},
+
+
+{
+word: "HATSUNE MIKU" ,
+forbidden: ["JAPANESE", "ANIME", "BLUE", "TEAL", "WIFI", "TETO", "NERU", "SINGER", "MIKU", "39"]
+//WEIRD TO BAN FROM SAYING MIKU WELL NOT WEIRD, THAT WOULD MAKE IT TOO EASY
+//Why is the word weird spelt so weirdly
+},
+
+{
+word: "NETFLIX",
+forbidden: ["SUBSCRIPTION", "HULU", "DISNEY", "HBO", "HBO MAX", "RED", "N", "MOVIE", "SERIES", "STREAM", "STREAMING", "WATCH", "LOVE ISLAND"]
 
 },
 
 {
-word:
-forbidden: []
-
-},
-
-{
-word:
-forbidden: []
-
-},
-
-{
-word:
-forbidden: []
-
-},
-
-{
-word:
-forbidden: []
-
-},
-
-{
-word:
-forbidden: []
-
-},
-
-{
-word:
-forbidden: []
-
-},
-
-{
-word:
-forbidden: []
-
-},
-
-{
-word:
-forbidden: []
-
-},
-
-{
-word:
-forbidden: []
-
-},
-
-{
-word:
-forbidden: []
-
-},
-
-{
-word:
-forbidden: []
-
-},
-
-{
-word:
-forbidden: []
-
-},
-
-
+word: "ASTRONAUT",
+forbidden: ["SPACEX", "ELON MUSK", "ARTEMIS", "NASA", "RUSSIA", "ISS", "ROCKET", "SUIT", "MOON", "BLIUE", "MEATBALL"]
+//I still can't get over the fact that Nasa refers to the logos as "the meatball logo" and there's the "red worm logo"
+// a chevron is a shape, wow
+//10 words should be enough right, people wont play it that much, cus if I did more I would have to get up to 15 for the sake of my sanity(OCD mama wouldn't even remember how many words she did by morning but ok)
+}
 
 ];
+// my naming convention will get me in trouble but ok
+const word = words[Math.floor(Math.random() * words.length)];
+console.log(word);
+//AMANDA TAKE THAT LINE OF CODE YOU PUT ABOVE OUT OR YOU WILL REGRET IT
+//Apparently, when my js changed it didnt reload automatically which was stupid
+
+console.log("6 * 3 = 21");
+alert("6*3 = 21! (Your Game is fine when you click ok, Amanda just forgot to remove this if you just saw it)");
+// ooh , can you style alerts?, I need to stop checking my time every 5 minutes on hackatime, i see why you can change how the extension looks now
+
+//ahh math.floor, the beloved function that makes javascript not make me run mad with 100 decimal places, speaking of decimal places, i should really try making a calculator again
 
 // console.log the room iddddd 
 console.log("Firebase sucessfully redirected!");
@@ -191,9 +149,12 @@ const playerArray = Object.values(currentlist);
 console.log(playerArray);
 const Ready = playerArray.every(p => p.ready === true);
 if (Ready && playerArray.length >= 3) {
-    startGame();
+    // startGame();
+    alert("EVERYONE IS READY");
+//time to test if this even works IN 4 SEPARATE CHROME TABS
 } else {
     // alert("Please wait for another player to join the game!");
+    // I click it twice and it join twice, why
     ready.innerText = "Waiting for all game conditions to be met";
 };
 

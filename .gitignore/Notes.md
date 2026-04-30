@@ -92,3 +92,9 @@ OK so now, i am trying to understand firebase logic which is so confusing,
 
 NEXT COMMIT MESSAGE IS: BUT I DIGRESS, THERE IS PROGRESS
 If you haven't been able to tell yet, I love using console.log. It's about the only js function I don't need to seach online for to know how to use. That and alert
+
+yes my game will be buggy so I have to add a disclaimer, nah i really dont have to
+if the game says you guessed spiderman wrong because you typed it as spider-man. you ARE wrong
+
+# FOR MY README
+# DEAR SLEEPOVER REVIEWER, THIS IS PROBABLY SOME OF THE MOST DIRTY, BADLY FORMATTED AND UNSERIOUS CODE YOU HAVE SEEN TODAY. YOU HAVE WITNESSED THE CULMUNATION OF IDK WHAT TO TYPE ANYMORE.....
