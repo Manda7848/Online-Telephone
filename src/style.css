@@ -127,3 +127,26 @@ justify-self: center;
     align-items: center;
     justify-content: center;
 }
+
+
+/* I have to make the player list look beautiful at least */
+
+#fone{
+    display: none;
+}
+
+/* I have to change the id of the fone to a class so that I can just do js for class add when i want to show the fonr like classlistladd-show then forfone show imma just add the css  */
+
+.fone-show{
+    display: block;
+}
+
+#players{
+border: solid 10px rgb(174, 212, 235);
+ border-radius: 30px;
+ box-shadow: 15px 15px gray;
+list-style: none;
+
+}
+/* 
+But why wait nvm , they taught me why in school, i was about to ask why we use ids in stead of classes since but then ids are for unique, clas sis for general, yh */
