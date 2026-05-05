@@ -180,11 +180,14 @@ alert("That Button doesn't do anything");
 const myKey = sessionStorage.getItem("playerKey");
 console.log(myKey);
 ready.onclick = () => {
-
+console.log("It's guessing time")
 if (!myKey) {
 alert("Yeah, Idk who you are! Join the room correctly")
 return;
 }
+
+
+//EVERYONE IS READY
 database.ref(`rooms/${room}/players/${myKey}`).update({
     ready: true
 });
@@ -192,11 +195,14 @@ database.ref(`rooms/${room}/players/${myKey}`).update({
 ready.disabled = true;
 ready.innerText = "Waiting for others...";
 ready.classList.add("disabled");
+document.getElementById("fone").classList.add("show");
+
 
 }
 
 
-
+//WAITING FOR A RESPONSE FROM FIREBASE FEELS SO LAGGYYY, BUT WRITING COMMENTS IN JS IS SO SMOOTH AND EASY
+//TODO: MAKE TIC TAC TOE(OR YK, FIND AN ENGINE), INTEGRATE SPOTIFY, OR YK JUST A YOUTUBE PLAYLIST WOULD WORK FOR THE WAITING ROOM, REMEMEBRT O MAKE TRANSITIONS SOFT INSTEAD OF JUST QUICK REDIRECTS
 
 
 
