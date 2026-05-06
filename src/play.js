@@ -245,7 +245,7 @@ cell.onclick = (e) =>{
 
 function MakeMove(index, symbol) {
 board[index] = symbol;
-document.querySelector("data-index=", index).innerText = symbol;
+document.querySelector(`[data-index='${index}']`).innerText = symbol;
 isWin();
 
 }
@@ -260,7 +260,7 @@ MakeMove(random, "O");
 
 }
 
-
+//JAVASCRIPT IS THE BACKBONE UPON WHICH THE INTERNET SURVIVES. OVER 50% OF MY CODE IS JAVASCRIPT MEANING THAT WITHOUT IT, I WOULDN'T BE ABLE TO EVEN THINK ABOUT MAKING A GAME
 function isWin() {
 const winningnumbers = [
     [0,1,2], [3,4,5] , [6,7,8], [0,3,6], [1, 4, 7], [2, 5, 8], [0,4,8], [2, 4,6]];
@@ -273,18 +273,15 @@ const winningnumbers = [
             return;
         }
     }
-    
-
-}
-
-
-
 
     if (!board.includes("")) {
-        alert("It's a Draw!");
+        alert("It's a Draw!")
         resetBoard();
     }
+
 }
+
+
 
 function resetBoard() {
     board = ["", "", "", "", "", "", "", "", ""];
@@ -292,7 +289,7 @@ function resetBoard() {
 }
 //it appears I might have to use git cli cus github desktop is lagging really bad
 
-
+//Log the nubmer of times you have lost to the computer because why not, oh yeah it should. to make it more fun. you 0 or computer 0, yeah log in the console nah just have smth and add plus 1 depending on if x or o wins
 
 
 

@@ -211,3 +211,65 @@ button:active {
 /* DO NOT COPY CODE FROM THE INTERNET, ALL THIS STYLING FOR THAT SIMPLE BUTTON, YO. */
 /* 
 But why wait nvm , they taught me why in school, i was about to ask why we use ids in stead of classes since but then ids are for unique, clas sis for general, yh */
+
+
+
+
+#minigame{
+    text-align: center;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    width: 360px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    background-color: #AECDEB; 
+    padding: 5px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-family: "Segoe UI", sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.cell:hover {
+    background-color: #e0f2fe;
+}
+
+
+.cell:empty:before {
+    content: '';
+}
+
+
+#reset{
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
+/* 
+    Above is the equivalent of casting multiple variations of the same spell just to get it to work. I will always learn the difference between padding and margin the hard way */
+}
