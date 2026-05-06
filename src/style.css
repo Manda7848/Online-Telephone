@@ -149,6 +149,14 @@ list-style: none;
 
 }
 
+/* UNCOMMENT WHEN SURE THAT IT WORKS */
+
+/* 
+.hidden{
+
+    display: none;
+} */
+
 
 /* 
 button{

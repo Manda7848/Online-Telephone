@@ -222,10 +222,145 @@ document.getElementById("fone").classList.add("show");
 
 
 
+//OOPS, MY LAPTOP IS WARM TO THE TOUCH, WHICH NEVER HAPPENS, ANYWAYSSSSS.
+//TIME TO BUILD TIC TAC TOE ENGINE.
+
+
+
+let board = ["", "", "", "", "", "", "", "", ""];
+
+const cells = document.querySelectorAll('.cell');
+
+cells.forEach(cell => {
+cell.onclick = (e) =>{
+    const index = e.target.dataset.index;
+    if (board[index] === "" ) {
+
+        MakeMove(index, "X");
+        setTimeout(computerMove, 500);
+    }
+}})
+
+
+
+function MakeMove(index, symbol) {
+board[index] = symbol;
+document.querySelector("data-index=", index).innerText = symbol;
+isWin();
+
+}
+
+function computerMove() {
+let empty = board.map((val, idx) => val === "" ? idx : null).filter(val => val !== null)
+if (empty.length > 0) {
+let random = empty[Math.floor(Math.random() * empty.length)];
+MakeMove(random, "O");
+
+}
+
+}
+
+
+function isWin() {
+const winningnumbers = [
+    [0,1,2], [3,4,5] , [6,7,8], [0,3,6], [1, 4, 7], [2, 5, 8], [0,4,8], [2, 4,6]];
+
+    for (let pattern of winningnumbers) {
+        const [a,b,c] = pattern;
+        if (board[a] && board[a] === board [b] && board [a] === board[c]) {
+            alert(board[a] + " Wins!");
+            resetBoard();
+            return;
+        }
+    }
+    
+
+}
+
+
+
+
+    if (!board.includes("")) {
+        alert("It's a Draw!");
+        resetBoard();
+    }
+}
+
+function resetBoard() {
+    board = ["", "", "", "", "", "", "", "", ""];
+    cells.forEach(cell => cell.innerText = "");
+}
+//it appears I might have to use git cli cus github desktop is lagging really bad
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//DO NOT DELETE THIS BRACE OR TYPE CODE OUTSIDE IT BECAUSE THAT CODE WILL RUN BEFORE THE HTML LOADS
 }

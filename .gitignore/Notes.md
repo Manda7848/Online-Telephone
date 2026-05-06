@@ -98,3 +98,6 @@ if the game says you guessed spiderman wrong because you typed it as spider-man.
 
 # FOR MY README
 # DEAR SLEEPOVER REVIEWER, THIS IS PROBABLY SOME OF THE MOST DIRTY, BADLY FORMATTED AND UNSERIOUS CODE YOU HAVE SEEN TODAY. YOU HAVE WITNESSED THE CULMUNATION OF IDK WHAT TO TYPE ANYMORE.....
+
+
+Github desktop is lagging really bad so i'll try to install git and just use the cli.
