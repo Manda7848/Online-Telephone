@@ -101,3 +101,7 @@ if the game says you guessed spiderman wrong because you typed it as spider-man.
 
 
 Github desktop is lagging really bad so i'll try to install git and just use the cli.
+
+
+
+I'll add a space between each word in the array because there is no way I am writing javascript to put space in between

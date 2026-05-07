@@ -27,40 +27,40 @@ const database = firebase.database();
 //WORD LIST AT THE TOP
 const words = [
 { word: "IPHONE",
-    forbidden: ["APPLE", "PHONE", "SCREEN", "STEVE JOBS", "APP", "YOU"]
+    forbidden: [" APPLE ", " PHONE ", " SCREEN ", " STEVE JOBS ", " APP ", " YOU ", " ANDROID "]
 
 },
 
 {
 word: "PIZZA",
-forbidden: ["CHEESE", "ITALY", "DOUGH", "DELIVERY", "PEPPERONI", "SLICE", "PARTY"]
+forbidden: [" CHEESE ", " ITALY ", " DOUGH ", " DELIVERY ", " PEPPERONI ", " SLICE ", " PARTY ", " MARINARA ", " PINEAPPLE "]
 
 },
 
 {
 word: "SPIDERMAN",
-forbidden: ["MARVEL", "WEB", "PETER PARKER", "TOM HOLLAND", "ANDREW GARFIELD", "TOBEY MAGUIRE", "HERO","AVENGERS", "TONY STARK", "AUNT MAY", "UNCLE BEN", "SPIDER", "MAN"]
+forbidden: [" MARVEL ", " WEB ", " PETER PARKER ", " TOM HOLLAND ", " ANDREW GARFIELD ", " TOBEY MAGUIRE ", " HERO "," AVENGERS ", " TONY STARK ", " AUNT MAY ", " UNCLE BEN ", " SPIDER ", " MAN "]
 
 },
 
 
 {
 word: "BLACK PANTHER",
-forbidden: ["BLACK", "PANTHER", "SHURI", "T'CHALA", "PRINCE", "CLAW", "KILLMONGER", "WAKANDA", "AFRICA", "VIBRANIUM"]
+forbidden: [" BLACK ", " PANTHER ", " SHURI ", " T'CHALA ", " PRINCE ", " CLAW ", " KILLMONGER ", " WAKANDA ", " AFRICA ", " VIBRANIUM "]
 
 },
 
 
 {
 word:"TOP GUN",
-forbidden: ["PLANES", "ETHAN HUNT", "ROOSTER", "GOOSE", "PLANES", "WAR", "DOGFIGHTING","BUNKER"]
+forbidden: [" PLANES ", " ETHAN HUNT ", " ROOSTER ", " GOOSE ", " PLANES ", " WAR ", " DOGFIGHTING "," BUNKER "]
 //They'll never be able to guess this one correctly
 },
 
 
 {
 word:"MINECRAFT",
-forbidden: ["STEVE", "CHICKEN JOCKEY", "CREEPER", "ZOMBIE", "SKELETON", "RUEBEN", "BLOCKS", "BUILDING","MINING", "NETHER", "MOBS", "FLYING", "CREATIVE MODE"]
+forbidden: [" STEVE ", " CHICKEN JOCKEY ", " CREEPER ", " ZOMBIE ", " SKELETON ", " RUEBEN ", " BLOCKS ", " BUILDING "," MINING ", " NETHER ", " MOBS ", " FLYING ", " CREATIVE MODE "]
 //Rip Rueben, Minecraft story mode made me cry
 },
 
@@ -97,11 +97,15 @@ forbidden: ["SPACEX", "ELON MUSK", "ARTEMIS", "NASA", "RUSSIA", "ISS", "ROCKET",
 // my naming convention will get me in trouble but ok
 const word = words[Math.floor(Math.random() * words.length)];
 console.log(word);
+
+
+document.getElementById("mustguess").innerText = word.word;
+document.getElementById("forbidden").innerText = word.forbidden;
 //AMANDA TAKE THAT LINE OF CODE YOU PUT ABOVE OUT OR YOU WILL REGRET IT
 //Apparently, when my js changed it didnt reload automatically which was stupid
 
 console.log("6 * 3 = 21");
-alert("6*3 = 21! (Your Game is fine when you click ok, Amanda just forgot to remove this if you just saw it)");
+// alert("6*3 = 21! (Your Game is fine when you click ok, Amanda just forgot to remove this if you just saw it)");
 // ooh , can you style alerts?, I need to stop checking my time every 5 minutes on hackatime, i see why you can change how the extension looks now
 
 //ahh math.floor, the beloved function that makes javascript not make me run mad with 100 decimal places, speaking of decimal places, i should really try making a calculator again
@@ -269,13 +273,16 @@ const winningnumbers = [
         const [a,b,c] = pattern;
         if (board[a] && board[a] === board [b] && board [a] === board[c]) {
             alert(board[a] + " Wins!");
+            console.log(board[a], " Wins!");
             resetBoard();
+            
             return;
         }
     }
 
     if (!board.includes("")) {
-        alert("It's a Draw!")
+        alert("It's a Draw!");
+        console.log("You drew with a random math algorithm, cute")
         resetBoard();
     }
 
