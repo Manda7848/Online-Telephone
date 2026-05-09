@@ -23,6 +23,17 @@ const firebaseConfig = {
 let playerKeys=[];
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
+//array, array,array, array ah ah, array ah
+const tips = [
+    "Describe words using shared memories for more fun!",
+    "Avoid the forbidden words or you'll get a 'Nah you're wrong'!",
+    "Tic-Tac-Toe is just for the waiting time. Focus up!",
+    "The guesser only sees the very last hint. Be descriptive!"
+];
+
+document.getElementById("random-tip").innerText = tips[Math.floor(Math.random() * tips.length)];
+document.getElementById("random-tip").innerText = "IT IS WORKING"
+console.log("Idk, I just wanted to write in the consle");
 
 //WORD LIST AT THE TOP
 const words = [
@@ -148,12 +159,15 @@ li.innerText = playerlist.name;
 li.classList.add("players");
 players.appendChild(li);
 console.log(players);
+
+
 //START GAME
 const playerArray = Object.values(currentlist);
 console.log(playerArray);
 const Ready = playerArray.every(p => p.ready === true);
 if (Ready && playerArray.length >= 3) {
     // startGame();
+
     alert("EVERYONE IS READY");
     //IT WORKS, UNCOMMENT START GAME WHEN YOU FINISH MAKING IT
 //time to test if this even works IN 4 SEPARATE CHROME TABS
@@ -169,16 +183,26 @@ if (Ready && playerArray.length >= 3) {
 })
 
 
+// //DELETE ASAP
+// document.getElementById("send-hint").onclick = nothing4u;
 
-// What the I'm ready button does.
+// function nothing4u() {
 
-const ready = document.getElementById("ready");
+//     alert("NOTHING 4 U");
+//     alert("I said, Nothing for you");
+// //ew, why did I type that.
+// }
 
-document.getElementById("ready").onclick = dude;
-function dude() {
-alert("That Button doesn't do anything");
 
-}
+// // What the I'm ready button does.
+
+// const ready = document.getElementById("ready");
+
+// document.getElementById("ready").onclick = dude;
+// function dude() {
+// alert("That Button doesn't do anything");
+
+// }
 
 
 const myKey = sessionStorage.getItem("playerKey");
