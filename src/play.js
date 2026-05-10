@@ -30,9 +30,14 @@ const tips = [
     "Tic-Tac-Toe is just for the waiting time. Focus up!",
     "The guesser only sees the very last hint. Be descriptive!"
 ];
+console.log(tips);
+function randomtip() {
+    document.getElementById("random-tip").innerText = tips[Math.floor(Math.random() * tips.length)];
 
-document.getElementById("random-tip").innerText = tips[Math.floor(Math.random() * tips.length)];
-document.getElementById("random-tip").innerText = "IT IS WORKING"
+}
+setInterval(randomtip ,5000);
+
+// document.getElementById("random-tip").innerText = "IT IS WORKING"
 console.log("Idk, I just wanted to write in the consle");
 
 //WORD LIST AT THE TOP
