@@ -110,3 +110,6 @@ I'll add a space between each word in the array because there is no way I am wri
 
 
 Ctrl + F made my life so much easier
+
+
+learned that `` are an intergated way to make rendering strings easy

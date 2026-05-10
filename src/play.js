@@ -28,7 +28,8 @@ const tips = [
     "Describe words using shared memories for more fun!",
     "Avoid the forbidden words or you'll get a 'Nah you're wrong'!",
     "Tic-Tac-Toe is just for the waiting time. Focus up!",
-    "The guesser only sees the very last hint. Be descriptive!"
+    "The guesser only sees the very last hint. Be descriptive!",
+    "You can add comments to your descriptions in brackets like: (You can never guess this)"
 ];
 console.log(tips);
 function randomtip() {
@@ -43,40 +44,40 @@ console.log("Idk, I just wanted to write in the consle");
 //WORD LIST AT THE TOP
 const words = [
 { word: "IPHONE",
-    forbidden: [" APPLE ", " PHONE ", " SCREEN ", " STEVE JOBS ", " APP ", " YOU ", " ANDROID "]
+    forbidden: ["APPLE", "PHONE", "SCREEN", "STEVE JOBS", "APP", "YOU", "ANDROID", "IOS"]
 
 },
 
 {
 word: "PIZZA",
-forbidden: [" CHEESE ", " ITALY ", " DOUGH ", " DELIVERY ", " PEPPERONI ", " SLICE ", " PARTY ", " MARINARA ", " PINEAPPLE "]
+forbidden: ["CHEESE", "ITALY", "DOUGH", "DELIVERY", "PEPPERONI", "SLICE", "PARTY", "MARINARA", "PINEAPPLE"]
 
 },
 
 {
-word: "SPIDERMAN",
-forbidden: [" MARVEL ", " WEB ", " PETER PARKER ", " TOM HOLLAND ", " ANDREW GARFIELD ", " TOBEY MAGUIRE ", " HERO "," AVENGERS ", " TONY STARK ", " AUNT MAY ", " UNCLE BEN ", " SPIDER ", " MAN "]
+word: "SPIDERMAN", 
+forbidden: ["MARVEL", "WEB", "PETER PARKER", "TOM HOLLAND", "ANDREW GARFIELD", "TOBEY MAGUIRE",  "HERO","AVENGERS", "TONY STARK", "AUNT MAY", "UNCLE BEN", "SPIDER", "MAN"]
 
 },
 
 
 {
 word: "BLACK PANTHER",
-forbidden: [" BLACK ", " PANTHER ", " SHURI ", " T'CHALA ", " PRINCE ", " CLAW ", " KILLMONGER ", " WAKANDA ", " AFRICA ", " VIBRANIUM "]
+forbidden: ["BLACK", "PANTHER", "SHURI", "T'CHALA", "PRINCE", "CLAW", "KILLMONGER", "WAKANDA", "AFRICA", "VIBRANIUM"]
 
 },
 
 
 {
 word:"TOP GUN",
-forbidden: [" PLANES ", " ETHAN HUNT ", " ROOSTER ", " GOOSE ", " PLANES ", " WAR ", " DOGFIGHTING "," BUNKER "]
+forbidden: ["PLANES", "ETHAN HUNT", "ROOSTER", "GOOSE", "ROOSTER", "PLANES", "WAR", "DOGFIGHTING","BUNKER", "MAVERICK"]
 //They'll never be able to guess this one correctly
 },
 
 
 {
 word:"MINECRAFT",
-forbidden: [" STEVE ", " CHICKEN JOCKEY ", " CREEPER ", " ZOMBIE ", " SKELETON ", " RUEBEN ", " BLOCKS ", " BUILDING "," MINING ", " NETHER ", " MOBS ", " FLYING ", " CREATIVE MODE "]
+forbidden: ["STEVE", "CHICKEN JOCKEY", "CREEPER",  "ZOMBIE", "SKELETON", "RUEBEN", "BLOCKS", "BUILDING","MINING", "NETHER", "MOBS", "FLYING", "CREATIVE MODE"]
 //Rip Rueben, Minecraft story mode made me cry
 },
 
@@ -328,6 +329,39 @@ function resetBoard() {
 
 
 
+
+
+//ROLE LIST
+
+
+// <div id="role-reveal" class="overlay">
+//     <ul id="role-list"></ul>
+//     <!-- DYNAMICALLY CREATE THE ROLES IN THE FORMAT {NAME IS} DESCRIBER ONE, NEXT LIKE {NAME IS} DESCRIBER 2 ETC -->
+// </div>
+
+
+// function renderRoles(data) {
+//  const rolelist = document.getElementById("role-list");
+//  if (!rolelist) return;
+//  rolelist.innerHTML = "";
+
+
+//  playerKeys.forEach((key, index) => {
+//    const li = document.createElement("li");
+//    const pName = snapshotData.players[key].name;
+
+
+//    if (index === playerKeys.length - 1) {
+//    li.innerText = `FINAL GUESSER: ${pName}`;
+
+//    } else {
+
+
+//    }
+
+//  })
+
+// }
 
 
 
