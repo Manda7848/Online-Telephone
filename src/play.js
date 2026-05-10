@@ -111,12 +111,10 @@ forbidden: ["SPACEX", "ELON MUSK", "ARTEMIS", "NASA", "RUSSIA", "ISS", "ROCKET",
 
 ];
 // my naming convention will get me in trouble but ok
-const word = words[Math.floor(Math.random() * words.length)];
-console.log(word);
 
 
-document.getElementById("mustguess").innerText = word.word;
-document.getElementById("forbidden").innerText = word.forbidden;
+
+
 //AMANDA TAKE THAT LINE OF CODE YOU PUT ABOVE OUT OR YOU WILL REGRET IT
 //Apparently, when my js changed it didnt reload automatically which was stupid
 
@@ -171,7 +169,7 @@ const playerArray = Object.values(currentlist);
 console.log(playerArray);
 const Ready = playerArray.every(p => p.ready === true);
 if (Ready && playerArray.length >= 3) {
-    // startGame();
+    startGame();
 
     alert("EVERYONE IS READY");
     //IT WORKS, UNCOMMENT START GAME WHEN YOU FINISH MAKING IT
@@ -335,7 +333,35 @@ function resetBoard() {
 
 
 
+//GAME LOGIC ITSELF
+function startGame() {
 
+const word = words[Math.floor(Math.random() * words.length)];
+const currentlist = playerKeys;
+console.log(currentlist);
+// console.log(word);
+
+
+const guesser = playerKeys[playerKeys.length - 1];
+console.log("The guesser is" + guesser);
+
+const describers = playerKeys.slice(0, playerKeys.length - 1);
+console.log("the describers are " + describers);
+
+document.getElementById("mustguess").innerText = word.word;
+document.getElementById("forbidden").innerText = word.forbidden;
+
+//TALK TO FIREBASE
+
+database.ref(`rooms/${room}`).update({
+    status : "playing",
+    currentWord: word.word,
+    forbiddenWords: word.forbidden,
+    guesser: guesser,
+    describers: describers,
+    latestHint: "waiting for first hint",
+});
+}
 
 
 
