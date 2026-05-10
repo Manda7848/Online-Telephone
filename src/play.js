@@ -174,7 +174,28 @@ const Ready = playerArray.every(p => p.ready === true);
 if (Ready && playerArray.length >= 3) {
     startGame();
 
-    alert("EVERYONE IS READY");
+    const overlay = document.getElementById("role-reveal");
+    overlay.style.display = "flex";
+
+    const rolelist = document.getElementById("role-list");
+    rolelist.innerHTML = "";
+
+    playerKeys.forEach((key, index) => {
+     const li = document.createElement("li");
+     const pName = currentlist[key].name;
+
+     if (index === playerKeys.length - 1) {
+     li.innerHTML = `<strong> FINAL GUESSER: ${pName} </strong>` ;
+
+     } else {
+     li.innerText = `${pName} is a DESCRIBER`;}
+
+     rolelist.appendChild(li);
+     document.getElementById("role-assignment").innerText = "";
+
+    })
+
+    alert("EVERYONe CHECK YOUR ROLES!");
     //IT WORKS, UNCOMMENT START GAME WHEN YOU FINISH MAKING IT
 //time to test if this even works IN 4 SEPARATE CHROME TABS
 } else {
