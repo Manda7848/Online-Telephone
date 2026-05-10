@@ -154,6 +154,8 @@ if (snapshot.exists()) {
 const currentlist = snapshot.val();
 playerKeys = Object.keys(currentlist);
 console.log(playerKeys);
+console.log(currentlist);
+
 Object.keys(currentlist).forEach((key) => {
 
 const playerlist = currentlist[key];
@@ -163,7 +165,7 @@ li.innerText = playerlist.name;
 li.classList.add("players");
 players.appendChild(li);
 console.log(players);
-
+});
 
 //START GAME
 const playerArray = Object.values(currentlist);
@@ -179,12 +181,10 @@ if (Ready && playerArray.length >= 3) {
     // alert("Please wait for another player to join the game!");
     // I click it twice and it join twice, why
     ready.innerText = "Waiting for all game conditions to be met";
-};
-
-})
+}
 
 }
-})
+});
 
 
 // //DELETE ASAP
@@ -334,11 +334,6 @@ function resetBoard() {
 //ROLE LIST
 
 
-// <div id="role-reveal" class="overlay">
-//     <ul id="role-list"></ul>
-//     <!-- DYNAMICALLY CREATE THE ROLES IN THE FORMAT {NAME IS} DESCRIBER ONE, NEXT LIKE {NAME IS} DESCRIBER 2 ETC -->
-// </div>
-
 
 // function renderRoles(data) {
 //  const rolelist = document.getElementById("role-list");
@@ -367,6 +362,17 @@ function resetBoard() {
 
 
 
+// <div id="role-reveal" class="overlay">
+//     <ul id="role-list"></ul>
+//     <!-- DYNAMICALLY CREATE THE ROLES IN THE FORMAT {NAME IS} DESCRIBER ONE, NEXT LIKE {NAME IS} DESCRIBER 2 ETC -->
+// </div>
+
+
+
+
+
+
+
 //GAME LOGIC ITSELF
 function startGame() {
 
@@ -376,7 +382,10 @@ console.log(currentlist);
 // console.log(word);
 
 
+
+
 const guesser = playerKeys[playerKeys.length - 1];
+// const guessername = currentlist[guesser].name;
 console.log("The guesser is" + guesser);
 
 const describers = playerKeys.slice(0, playerKeys.length - 1);

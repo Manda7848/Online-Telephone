@@ -113,3 +113,5 @@ Ctrl + F made my life so much easier
 
 
 learned that `` are an intergated way to make rendering strings easy
+
+rip people that have slow wifi
