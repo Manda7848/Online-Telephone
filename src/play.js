@@ -146,15 +146,21 @@ document.getElementById("id").innerText = room;
 const players = document.getElementById("players");
 
 //list current players
-database.ref(`rooms/${room}/players`).on('value', (snapshot) => {
-
+database.ref(`rooms/${room}`).on('value', (snapshot) => {
+const data = snapshot.val();
+if (!data) return;
 players.innerHTML = "";
 
-if (snapshot.exists()) {
-const currentlist = snapshot.val();
-playerKeys = Object.keys(currentlist);
+
+const currentlist = data.players || {}; 
+playerKeys = Object.keys(currentlist); 
+const myIndex = playerKeys.indexOf(myKey);
+
+// const currentlist = snapshot.val();
+
 console.log(playerKeys);
 console.log(currentlist);
+
 
 Object.keys(currentlist).forEach((key) => {
 
@@ -167,12 +173,15 @@ players.appendChild(li);
 console.log(players);
 });
 
+
+
 //START GAME
 const playerArray = Object.values(currentlist);
 console.log(playerArray);
 const Ready = playerArray.every(p => p.ready === true);
-if (Ready && playerArray.length >= 3) {
+if (Ready && playerArray.length >= 3) && data.status !== "playing" {
     startGame();
+
 
     const overlay = document.getElementById("role-reveal");
     overlay.style.display = "flex";
@@ -180,12 +189,11 @@ if (Ready && playerArray.length >= 3) {
     const rolelist = document.getElementById("role-list");
     rolelist.innerHTML = "";
 
-    playerKeys.forEach((key, index) => {
-     const li = document.createElement("li");
-     const pName = currentlist[key].name;
+
+
 
 //Wait a minute, Who are you?
-     const isDescriberTurn = (database.activeDescriberIndex === myIndex && data.guesser != myKey ); 
+     const isDescriberTurn = (data.activeDescriberIndex === myIndex && data.guesser != myKey ); 
      const isGuesserTurn = (data.activeDescriberIndex >= data.describers.length && data.guesser === myKey);
 
 
@@ -194,7 +202,7 @@ if (Ready && playerArray.length >= 3) {
      document.getElementById("game-ui").style.display = "block";
 
 //About to write an if statement with so many conditionals. Lord help me
-     if (isDecriberTurn) {
+     if (isDescriberTurn) {
      showDescriberUI(data); } else if (isGuesserTurn) {
         showGuesserUI(data); } else {
             showWaitingUI(data);
@@ -208,6 +216,48 @@ if (Ready && playerArray.length >= 3) {
     //Console.log is the only thing in Javascript I can write with my eyes closed and be sure it won't throw an error
 
      }
+
+
+     if (data.status === "playing") {
+    document.getElementById("lobby-ui").style.display = "none";
+    document.getElementById("game-ui").style.display = "block";
+
+    const myIndex = playerKeys.indexOf(myKey);
+    const isMyTurn = (data.activeDescriberIndex === myIndex);
+    const isGuesser = (myIndex === playerKeys.length - 1);
+
+    if (isMyTurn) {
+        document.getElementById("waiting-msg").style.display = "none";
+        document.getElementById("hint-div").style.display = "block";
+      
+        if (!isGuesser) {
+         
+            const text = (data.activeDescriberIndex === 0) ? data.currentWord : data.latestHint;
+            document.getElementById("mustguess").innerText = text;
+           
+        } else {
+          
+            document.getElementById("mustguess").innerText = "THE HINT: " + data.latestHint;
+           
+        }
+    } else {
+   
+        document.getElementById("input-section").style.display = "none";
+        document.getElementById("waiting-msg").style.display = "block";
+        document.getElementById("minigame").style.display = "block";
+        
+        const activeKey = playerKeys[data.activeDescriberIndex];
+        if (activeKey) {
+            document.getElementById("waiting-msg").innerText = `Waiting for ${currentlist[activeKey].name}...`;
+        }
+    }
+
+
+
+    playerKeys.forEach((key, index) => {
+     const li = document.createElement("li");
+     const pName = currentlist[key].name;
+
 
      if (index === playerKeys.length - 1) {
      li.innerHTML = `<strong> FINAL GUESSER: ${pName} </strong>` ;
@@ -228,9 +278,8 @@ if (Ready && playerArray.length >= 3) {
     // I click it twice and it join twice, why
     ready.innerText = "Waiting for all game conditions to be met";
 }
-
 }
-});
+})
 
 
 
@@ -455,6 +504,7 @@ database.ref(`rooms/${room}`).update({
     forbiddenWords: word.forbidden,
     guesser: guesser,
     describers: describers,
+    activeDescriberIndex: 0,
     latestHint: "waiting for first hint",
 });
 }
@@ -469,10 +519,26 @@ database.ref(`rooms/${room}`).update({
 function submitHint() {
     const input = document.getElementById("hint").value.toUpperCase();
     console.log(input);
-    const forbidden = room.Data.forbiddenWords || [];
+    if (!input) return;
+
+
+database.ref(`rooms/${room}`).once('value', (snap) => {
+        const data = snap.val();
+        const myIndex = playerKeys.indexOf(myKey);
+        const isGuesser = (myIndex === playerKeys.length - 1);
+
+
+
+
+
+
+
+
+    const forbidden = room.data.forbiddenWords || [];
 
 
     const isForbidden = forbidden.some(word => input.includes(word.toUpperCase()));
+
 
 
 
@@ -486,7 +552,7 @@ function submitHint() {
 
     database.ref(`rooms/${room}`).update({
         latestHint: input,
-        activeDescriberIndex: room.Data.activeDescriberIndex + 1,
+        activeDescriberIndex: data.activeDescriberIndex + 1,
     });
 
 
@@ -498,11 +564,42 @@ function submitHint() {
             status: "finished",
         });
     }
+});
 }
 
 
 
-document.getElementByID("sent-hint").onclick = submitHint;
+// document.getElementById("send-hint").onclick = () => {
+//     const val = document.getElementById("hint").value.trim().toUpperCase();
+//     if (!val) return;
+
+//     database.ref("rooms/" + room).once('value', (snap) => {
+//         const d = snap.val();
+//         const pKeys = Object.keys(d.players);
+//         const myIdx = pKeys.indexOf(myKey);
+//         const isG = (myIdx === pKeys.length - 1);
+
+//         if (!isG) {
+           
+//             if ((d.forbiddenWords || []).some(f => val.includes(f.toUpperCase()))) {
+//                 alert("THERE IS FORBIDDEN WORD IN YOUR DESCRIPTION!");
+//                 return;
+//             }
+//             database.ref("rooms/" + room).update({
+//                 latestHint: val,
+//                 activeDescriberIndex: d.activeDescriberIndex + 1
+//             });
+//         } else {
+        
+//             database.ref("rooms/" + room).update({
+//                 finalGuess: val,
+//                 status: "finished"
+//             });
+//             alert("")
+//         }
+//         document.getElementById("hint").value = ""; 
+//     });
+// };
 
 
 
