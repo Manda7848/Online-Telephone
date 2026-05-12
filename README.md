@@ -19,4 +19,4 @@ NEVER CODE AT 4AM, THERE WILL BE GHOSTS IN YOUR CODE
 
 
 
-! [Hackatime Badge] (https://hackatime-badge.hackclub.com/@manda7848/project/Online-Telephone/hackatime-badge)
+![Hackatime Badge] (https://hackatime-badge.hackclub.com/@manda7848/project/Online-Telephone/hackatime-badge)
