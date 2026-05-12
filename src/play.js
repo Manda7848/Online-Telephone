@@ -184,6 +184,31 @@ if (Ready && playerArray.length >= 3) {
      const li = document.createElement("li");
      const pName = currentlist[key].name;
 
+//Wait a minute, Who are you?
+     const isDescriberTurn = (database.activeDescriberIndex === myIndex && data.guesser != myKey ); 
+     const isGuesserTurn = (data.activeDescriberIndex >= data.describers.length && data.guesser === myKey);
+
+
+     if (data.status === "playing") {
+     document.getElementById("lobby-ui").style.display = "none";
+     document.getElementById("game-ui").style.display = "block";
+
+//About to write an if statement with so many conditionals. Lord help me
+     if (isDecriberTurn) {
+     showDescriberUI(data); } else if (isGuesserTurn) {
+        showGuesserUI(data); } else {
+            showWaitingUI(data);
+        }
+
+
+     } else if( data.status === "finished") {
+    showRevealUI(data);
+    console.log("game over!");
+
+    //Console.log is the only thing in Javascript I can write with my eyes closed and be sure it won't throw an error
+
+     }
+
      if (index === playerKeys.length - 1) {
      li.innerHTML = `<strong> FINAL GUESSER: ${pName} </strong>` ;
 
@@ -206,6 +231,13 @@ if (Ready && playerArray.length >= 3) {
 
 }
 });
+
+
+
+
+
+
+
 
 
 // //DELETE ASAP
@@ -432,11 +464,45 @@ database.ref(`rooms/${room}`).update({
 
 
 
+//SUBMIT THE HINT
+
+function submitHint() {
+    const input = document.getElementById("hint").value.toUpperCase();
+    console.log(input);
+    const forbidden = room.Data.forbiddenWords || [];
+
+
+    const isForbidden = forbidden.some(word => input.includes(word.toUpperCase()));
 
 
 
+    if (isForbidden) {
+        alert("THERE IS A FORBIDDEN WORD IN YOUR HINT! FISH IT OUT");
+        return;
+
+        //return is like telling your code to retreat. I really don't wanna include all this in my readme
+        
+    }
+
+    database.ref(`rooms/${room}`).update({
+        latestHint: input,
+        activeDescriberIndex: room.Data.activeDescriberIndex + 1,
+    });
 
 
+
+    function submitFinalGuess() {
+        const guess = document.getElementById("hint").value.toUpperCase();
+        database.ref(`rooms/${room}`).update({
+            finalGuess: guess,
+            status: "finished",
+        });
+    }
+}
+
+
+
+document.getElementByID("sent-hint").onclick = submitHint;
 
 
 
