@@ -195,7 +195,7 @@ if (Ready && playerArray.length >= 3) {
 
     })
 
-    alert("EVERYONe CHECK YOUR ROLES!");
+    alert("EVERYONE CHECK YOUR ROLES!");
     //IT WORKS, UNCOMMENT START GAME WHEN YOU FINISH MAKING IT
 //time to test if this even works IN 4 SEPARATE CHROME TABS
 } else {
