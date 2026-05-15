@@ -36,7 +36,7 @@
 
 <div id="roles" class="overlay">
     <h1 id="reveal-text">GET READY...</h1>
-    <p id="role-assignment">Checking your roles...</p>
+   
     <div class="loading-tip">
         <strong>Pro Tip:</strong> <span id="random-tip">LOADING.....</span>
         
@@ -57,26 +57,22 @@
     <!-- ADD HIDDEN ONCE DONE STYLING -->
 <div id="describer-ui">
 <div id="word-round" >
-    <h1 id="mustguess">Main Word</h1>
+   <h1>Your hint is:</h1> <h1 id="mustguess">Main Word</h1>
     <h2 id="forbade">You Are forbidden from saying: <span id="forbidden">AHHHHH 67</span></h2>
 </div>
 
     <div id="hint-div">
-        <input type="text" id="hint" placeholder="Type your description here...">
+        <input type="text" id="hint" placeholder="Type your description here..." autocomplete="none">
         <button id="send-hint">Send Hint</button>
-        <h1 id="final-hint">Your Hint is: <span id="latest-hint"></span> </h1>
+      
 </div>
 
 
 
-<div id="guesser-ui" class="hidden">
-    <h2 id="waiting-msg">Waiting for the describer to send a hint...</h2>
-    </div>
-
 
     <div id="final-guess">
-  <h1 id="guesser-hint">Try to guess the word/person/thing that this is describing: <span id="final-description"></span></h1>
-  <input type="text" id="final-guess" placeholder="Type your guess here...">
+  <h1 id="guesser-hint">Try to guess the word/person/thing/phrase that this is describing: <span id="final-description"></span></h1>
+  <input type="text" id="guess-input" placeholder="Type your guess here..." autocomplete="none">
         <button id="send-guess">Send Guess!</button>
     </div>
 
@@ -105,5 +101,44 @@
     </div>
 
 </div>
+
+<script>
+
+    function startRealtimeGameLoop() {
+    // Listen to live updates for this specific room
+    database.ref(`rooms/${room}`).on('value', (snapshot) => {
+        const d = snapshot.val();
+        if (!d) return;
+
+        // 1. Check if the game is finished
+        if (d.status === "finished") {
+            showEndGameScreen(d);
+            return;
+        }
+
+        // 2. Find out whose turn it is right now
+        const currentPlayerKey = d.playerKeys[d.activeDescriberIndex];
+        const myKey = sessionStorage.getItem("playerKey");
+
+        // 3. Update the UI based on role and turn
+        if (myKey === currentPlayerKey) {
+            // --- IT IS MY TURN ---
+            
+            // If I am the GUESSER (the last person in the array)
+            if (d.activeDescriberIndex === d.playerKeys.length - 1) {
+                triggerGuesserTurn(d.latestHint);
+            } else {
+                // I am a subsequent DESCRIBER (Player 2, Player 3, etc.)
+                triggerDescriberTurn(d.latestHint);
+            }
+
+        } else {
+            // --- IT IS NOT MY TURN ---
+            showWaitingScreen(); 
+            // (Perfect time to show your Tic-Tac-Toe minigame or pro-tips!)
+        }
+    });
+}
+</script>
 </body>
 </html>

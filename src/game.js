@@ -32,7 +32,7 @@ create.onclick = generateid;
 
 
 function generateid() {
-id = Math.floor(Math.random() * 500) + 1000;
+id = Math.floor(Math.random() * 1000) + 1000;
 console.log("Your room id is =", id);
 // document.getElementById("id1").innerText = id;
 document.getElementById("id2").innerText = id;
@@ -124,7 +124,7 @@ ready: false
   console.log(snap.key);
   setTimeout(() => {
     window.location.href = "game.html?room=" + roomid;
-  }, 250);
+  }, 100);
 
 
 });

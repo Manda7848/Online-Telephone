@@ -16,7 +16,9 @@ PLEASE BE PATIENT AND DONT CLICK THE JOIN BUTTON MULTIPLE TIMES IF NOT IT WILL B
 NEVER CODE AT 4AM, THERE WILL BE GHOSTS IN YOUR CODE
 
 
+please please please read the readme before playing.
+
+do not try to break this game.
 
 
-
-![Hackatime Badge] (https://hackatime-badge.hackclub.com/manda7848/project/Online-Telephone/hackatime-badge)
+![Hackatime Badge] (https://hackatime-badge.hackclub.com/manda7848/project/Online-Telephone/hackatime-badge) (It's not working T_T)
