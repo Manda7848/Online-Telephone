@@ -8,7 +8,7 @@
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
     <link rel="icon" type="image/x-icon" href="./logo.png">
     <!-- <script src="./game.js"></script> -->
-    <script src="./play.js"></script>
+    <script src="./logic.js"></script>
 
     <title>Telephone Game</title>
 </head>
@@ -101,44 +101,5 @@
     </div>
 
 </div>
-
-<script>
-
-    function startRealtimeGameLoop() {
-    // Listen to live updates for this specific room
-    database.ref(`rooms/${room}`).on('value', (snapshot) => {
-        const d = snapshot.val();
-        if (!d) return;
-
-        // 1. Check if the game is finished
-        if (d.status === "finished") {
-            showEndGameScreen(d);
-            return;
-        }
-
-        // 2. Find out whose turn it is right now
-        const currentPlayerKey = d.playerKeys[d.activeDescriberIndex];
-        const myKey = sessionStorage.getItem("playerKey");
-
-        // 3. Update the UI based on role and turn
-        if (myKey === currentPlayerKey) {
-            // --- IT IS MY TURN ---
-            
-            // If I am the GUESSER (the last person in the array)
-            if (d.activeDescriberIndex === d.playerKeys.length - 1) {
-                triggerGuesserTurn(d.latestHint);
-            } else {
-                // I am a subsequent DESCRIBER (Player 2, Player 3, etc.)
-                triggerDescriberTurn(d.latestHint);
-            }
-
-        } else {
-            // --- IT IS NOT MY TURN ---
-            showWaitingScreen(); 
-            // (Perfect time to show your Tic-Tac-Toe minigame or pro-tips!)
-        }
-    });
-}
-</script>
 </body>
 </html>

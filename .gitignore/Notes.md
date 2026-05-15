@@ -292,7 +292,15 @@ CURRENT PLAYERS RENDER
         players.innerHTML = "";
 
 
+ console.log(tips);
+    function randomtip() {
+        document.getElementById("random-tip").innerText = tips[Math.floor(Math.random() * tips.length)];
 
+    }
+    setInterval(randomtip, 5000);
+
+
+    
 
   const currentlist = data.players || {};
         const playerKeys = Object.keys(currentlist);
@@ -392,5 +400,11 @@ function resetBoard() {
 
 SO FIRST OFF, ROLE RENDER LIST, THE ONCE THE START GAME FUNCTION RUNS, HIDE THE PLAYER LIST, 
 
+SHOW THE FIRST DESCRIBER THE WORD AND INPUT FIELD FOR THEIR HINT.
+
+MOST LIKELY ILL STILL DO THE THING WHERE THE FINAL GUESSER GETS A DIFFERENT CARD ENTIRELY SO THAT WHEN THEY SEND THEIR LIST IT FINISHED THE GAME THEN SYNCHRONISES EVERYONES PAGES YEA.
+
+SOUNDS GREAT IN THEORY. HOEFULLY I DONT MESS UP AGAIN
 
 
+WAS about to delete oay.js code then \i realised it has a bunt of notes THERE
