@@ -18,6 +18,10 @@ todo:
 - */
 
 
+#roles{
+    display: none;
+}
+
 body{
 font-family: "Special Elite", system-ui;
   font-weight: 400;

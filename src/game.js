@@ -40,6 +40,7 @@ document.getElementById("id2").innerText = id;
 
 database.ref('rooms/' + id).set ({
 status: "waiting",
+currentWord: "hint",
 exists: true
 
 }).then(() => {
@@ -100,6 +101,8 @@ const join = document.getElementById("join");
 
 join.onclick = function() {
 console.log("Join was clicked");
+join.style.display = "none";
+
 // if room.value or name.value = "", alert "fill in both fields first!"
 
 let roomid = document.getElementById("room").value;
@@ -116,7 +119,8 @@ if (snapshot.exists()) {
 database.ref('rooms/' + roomid + '/players').push({
 name: name,
 joined: Date.now(),
-ready: false
+ready: false,
+
 
 }).then((snap) => {
 
@@ -140,10 +144,7 @@ alert("Please enter a room code that actually exists!")
 
 }
 
-
-
  
-
 // Idea, make tic tac Toe, apotify for web is so buggy but the pc app is refusing to respong, probably breaking so amny coding conventions by putting these comments here but notes.md is a mess
 
 
