@@ -39,6 +39,6 @@ it taught me about sing the firebase realtime db. it made me cry alot. 2 hours t
 What did I learn?
 How problematic coding can be, but also how clea css can make your website look, as well as integrating math. random which i learned a while a go. I might have not succeded at my set goal just this time. but this is a stepping stone to it.
 
-
+You can check out notes.md if you want
 
 ![Hackatime Badge] (https://hackatime-badge.hackclub.com/manda7848/project/Online-Telephone/hackatime-badge) (It's not working T_T)
