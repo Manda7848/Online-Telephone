@@ -43,11 +43,11 @@ You can check out notes.md if you want
 <img src="./src/logo.png">
 
 # VERSON 1 DESIGN
-<img src="./src/screenshot-(354).png">
+<img src="./src/Screenshot-(354).png">
 
 # Version 2 design
-<img src="./src/screenshot-(356).png">
+<img src="./src/Screenshot-(356).png">
 
 
 # Version 3 design
-<img src="./src/screenshot-(367).png">
+<img src="./src/Screenshot-(367).png">
