@@ -136,12 +136,14 @@ const words = [
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
 
-const word = words[Math.floor(Math.random() * words.length)];
+
+
+
 const myKey = sessionStorage.getItem("playerKey");
 console.log(myKey);
 ready.onclick = () => {
 console.log("It's guessing time");
-alert("still working on it");
+alert("The game will start when all players are ready");
 document.getElementById("ready").style.display = "none";
 
     
@@ -198,54 +200,299 @@ console.log(myIndex);
 //STARTGAME
 const allReady = playerKeys.every(key => currentlist[key].ready === true);
 // const status = database.ref(`rooms/${room}/status`);
-if (totalPlayers >= 2 && allReady && data.status === "waiting") {
+if (totalPlayers >= 3 && allReady && data.status === "waiting") {
     console.log("All players are locked in! Starting the game...");
     startGame();
-    console.log("stargame just ran")
+    console.log("startgame just ran")
 }
 
-
+ const hint = document.getElementById("mustguess");
 
 
 function startGame() {
 
 
-    //   document.getElementById("mustguess").innerText = word.word;
-alert("The game has begun, if anyone wishes to join, you have to make a new room!");
-document.getElementById("roles").style.display = "block";
-document.getElementById("lobby-ui").style.display = "none";
+    
+    alert("The game has begun, if anyone wishes to join, you have to make a new room!");
+    
+   
+    document.getElementById("roles").style.display = "block";
+    document.getElementById("lobby-ui").style.display = "none";
 
-setTimeout(() => {
-document.getElementById("roles").style.display = "none";
+    setTimeout(() => {
+        document.getElementById("roles").style.display = "none";
+        
+    }, 5000);
 
+    const myIndex = playerKeys.indexOf(myKey);
+    if (myIndex === 0) {
 
-}, 5000);
-
-const myIndex = playerKeys.indexOf(myKey);
-if (myIndex === 0) {
-
-
+const word = words[Math.floor(Math.random() * words.length)];
 document.getElementById("mustguess").innerText = word.word;
 
-database.ref(`rooms/${room}`).update({ status: "playing", currentWord: word});
-        database.ref(`rooms/${room}`).update({ 
 
-            currentWord: word 
+        // Notice we set latestHint to the raw word so Player 1 knows what to describe
+        database.ref(`rooms/${room}`).update({ 
+            status: "playing", 
+            currentWord: word, 
+            latestHint: word.word, 
+            activeDescriberIndex: 0 
         });
+    
+
     }
 
 
 
 
+if (data.status === "playing") {
+
+    document.getElementById("lobby-ui").style.display = "none";
+
+    // 2. Who am I?
+    const currentlist = data.players || {};
+    const playerKeys = Object.keys(currentlist);
+    const myIndex = playerKeys.indexOf(myKey);
+    const isMyTurn = (data.activeDescriberIndex === myIndex);
+
+    // 3. The Big Toggle
+    if (isMyTurn) {
+      
+        document.getElementById("minigame").style.display = "none";
+        document.getElementById("game-ui").style.display = "block";
+
+        const textToShow = (data.activeDescriberIndex === 0) ? data.currentWord : data.latestHint;
+        document.getElementById("mustguess").innerText = textToShow;
+        
+    } else {
+    
+     
+        document.getElementById("game-ui").style.display = "none";
+        document.getElementById("minigame").style.display = "block";
+        
+  
+        const activePlayerKey = playerKeys[data.activeDescriberIndex];
+        if (activePlayerKey && currentlist[activePlayerKey]) {
+            document.getElementById("waiting-msg").innerText = `Waiting for ${currentlist[activePlayerKey].name} to type...`;
+        }
+    }
 }
 
 
 
 
 
-//END OF THE ON.VALUE LISTENER
+
+
+
+}});
+
+
+
+
+
+
+
+
+
+
+document.getElementById("send-hint").onclick = function () {
+    const hintvalue = document.getElementById("hint").value.trim().toUpperCase();
+    if (!hintvalue) return;
+
+    database.ref(`rooms/${room}/activeDescriberIndex`).once('value', (snap) => {
+        const currentIndex = snap.val() ?? 0;
+        database.ref(`rooms/${room}`).update({
+            latestHint: hintvalue,
+            activeDescriberIndex: currentIndex + 1
+        }).then(() => {
+            document.getElementById("hint").value = "";
+        });
     });
+};
+
+
+
+// document.getElementById("send-hint").onclick = function () {
+//     const hintvalue = document.getElementById("hint").value.trim();
+//     if (!hintvalue) return; 
+
+   
+//     database.ref(`rooms/${room}`).once('value', (snap) => {
+//         const d = snap.val();
+        
+//         database.ref(`rooms/${room}`).update({ 
+//             latestHint: hintvalue.toUpperCase(),
+//             activeDescriberIndex: d.activeDescriberIndex + 1 // Move to the next player!
+//         }).then(() => {
+            
+//             document.getElementById("hint").value = "";
+//         });
+//     });
+// };
+
+//     //   document.getElementById("mustguess").innerText = word.word;
+// alert("The game has begun, if anyone wishes to join, you have to make a new room!");
+// document.getElementById("roles").style.display = "block";
+// document.getElementById("lobby-ui").style.display = "none";
+
+// setTimeout(() => {
+// document.getElementById("roles").style.display = "none";
+
+
+// }, 5000);
+
+// const myIndex = playerKeys.indexOf(myKey);
+// if (myIndex === 0) {
+
+
+
+
+// database.ref(`rooms/${room}`).update({ status: "playing", currentWord: word, activeDescriberIndex: 0,});
+//         // database.ref(`rooms/${room}`).update({ 
+
+//         //     currentWord: word 
+//         // });
+
+
+// setTimeout(() => {
+     
+// document.getElementById("describer-ui").style.display = "block";
+
+
+// }, 5000);
+
+   
+
+// document.getElementById("send-hint").onclick = function () {
+// alert("hint will sent");
+// const hint = document.getElementById("hint");
+// const hintvalue = document.getElementById("hint").value;
+//  database.ref(`rooms/${room}`).update({ 
+
+//             latestHint: hintvalue.toUpperCase(),
+//             activeDescriberIndex: 1
+//         });
+
+// console.log(hint.value.toUpperCase());
+
+// setTimeout(() => {
+//      hint.value = "";
+// document.getElementById("describer-ui").style.display = "none";
+// }, 200);
+// }
+
+// } else if (isMyTurn) {
+//     alert("your time to shine");
+// } else if(isGuesser && isMyTurn) {
+// document.getElementById("received-hint").innerText = data.latestHint;
+// document.getElementById("guesser-ui").style.display = "block";
+// document.getElementById("minigame").style.display = "none";
+//     alert("guesser's turn");
+//     console.log("active deccriber index is = ", activeDescriberIndex);
+// }
+//     } else if {
+
+// setTimeout(() => {
+     
+// document.getElementById("minigame").style.display = "block";
+
+
+
+// }, 5000);
+
+
+
+//     }
+
+
+
+// const latestHint =  data.latestHint
+// if (isMyTurn ) {
+ 
+// document.getElementById("minigame").style.display = "none";
+// document.getElementById("describer-ui").style.display = "block";
+
+// hint.innerText = latestHint; 
+
+
+// }
+
+
+
+//END OF THE ON.VALUE LISTENER
+
     
+
+
+    //TIC TAC TOE
+
+
+      
+let board = ["", "", "", "", "", "", "", "", ""];
+
+const cells = document.querySelectorAll('.cell');
+
+cells.forEach(cell => {
+    cell.onclick = (e) => {
+        const index = e.target.dataset.index;
+        if (board[index] === "") {
+
+            MakeMove(index, "X");
+            setTimeout(computerMove, 500);
+        }
+    }
+})
+
+
+
+function MakeMove(index, symbol) {
+    board[index] = symbol;
+    document.querySelector(`[data-index='${index}']`).innerText = symbol;
+    isWin();
+
+}
+
+function computerMove() {
+    let empty = board.map((val, idx) => val === "" ? idx : null).filter(val => val !== null)
+    if (empty.length > 0) {
+        let random = empty[Math.floor(Math.random() * empty.length)];
+        MakeMove(random, "O");
+
+    }
+
+}
+
+//JAVASCRIPT IS THE BACKBONE UPON WHICH THE INTERNET SURVIVES. OVER 50% OF MY CODE IS JAVASCRIPT MEANING THAT WITHOUT IT, I WOULDN'T BE ABLE TO EVEN THINK ABOUT MAKING A GAME
+function isWin() {
+    const winningnumbers = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+
+    for (let pattern of winningnumbers) {
+        const [a, b, c] = pattern;
+        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+            alert(board[a] + " Wins!");
+            console.log(board[a], " Wins!");
+            resetBoard();
+
+            return;
+        }
+    }
+
+    if (!board.includes("")) {
+        alert("It's a Draw!");
+        console.log("You drew with a random math algorithm, cute")
+        resetBoard();
+    }
+
+}
+
+
+
+function resetBoard() {
+    board = ["", "", "", "", "", "", "", "", ""];
+    cells.forEach(cell => cell.innerText = "");
+}
 
 
 
