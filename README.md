@@ -35,4 +35,10 @@ This was a learnging project
 
 it taught me about sing the firebase realtime db. it made me cry alot. 2 hours to the dealine I had to restart my javascript. I honestly have no idea what to write in my readme. Peace!
 
+
+What did I learn?
+How problematic coding can be, but also how clea css can make your website look, as well as integrating math. random which i learned a while a go. I might have not succeded at my set goal just this time. but this is a stepping stone to it.
+
+
+
 ![Hackatime Badge] (https://hackatime-badge.hackclub.com/manda7848/project/Online-Telephone/hackatime-badge) (It's not working T_T)
