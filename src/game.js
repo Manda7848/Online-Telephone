@@ -102,6 +102,8 @@ const join = document.getElementById("join");
 join.onclick = function() {
 console.log("Join was clicked");
 join.style.display = "none";
+create.style.display = "none";
+document.getElementById("loading").style.display = "block";
 
 // if room.value or name.value = "", alert "fill in both fields first!"
 

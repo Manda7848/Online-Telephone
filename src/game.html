@@ -8,7 +8,8 @@
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
     <link rel="icon" type="image/x-icon" href="./logo.png">
     <!-- <script src="./game.js"></script> -->
-    <script src="./logic.js"></script>
+    <script src="./real.js"></script>
+     <!-- <script src="./test.js"></script> -->
 
     <title>Telephone Game</title>
 </head>
@@ -66,12 +67,12 @@
         <button id="send-hint">Send Hint</button>
       
 </div>
+</div>
 
 
 
-
-    <div id="final-guess">
-  <h1 id="guesser-hint">Try to guess the word/person/thing/phrase that this is describing: <span id="final-description"></span></h1>
+    <div id="guesser-ui">
+  <h1 id="guesser-hint">Try to guess the word/person/thing/phrase that this is describing: <span id="received-hint"></span></h1>
   <input type="text" id="guess-input" placeholder="Type your guess here..." autocomplete="none">
         <button id="send-guess">Send Guess!</button>
     </div>
@@ -83,7 +84,7 @@
     </div>
 
     <div id="minigame" class="hidden">
-        <h3>It's not your turn yet so you can play Tic-Tac-Toe</h3>
+        <h3>It's not your turn yet so you can play Tic-Tac-Toe while you wait</h3>
 <div class="board">
     <div class="cell" data-index="0"></div>
     <div class="cell" data-index="1"></div>
@@ -98,7 +99,7 @@
     <button id="reset">Reset Game</button>
 
 </div>
-    </div>
+    
 
 </div>
 </body>

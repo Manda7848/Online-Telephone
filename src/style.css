@@ -22,8 +22,67 @@ todo:
     display: none;
 }
 
+#describer-ui {
+display: none;
+
+}
+
+#minigame{
+    display:none;
+}
+
+#final-guess {
+    display: none;
+}
+
+#final-reveal {
+    display: none;
+}
+
+#loading {
+
+    display: none;
+}
+
+#guesser-ui{
+    display: none;
+}
+
+#body{
+
+  display: flex;
+align-self: center;
+align-content: center;
+align-items: center;
+flex-direction: column;
+ font-family:"Segoe UI", sans-serif;
+ border: solid 10px rgb(174, 212, 235);
+ border-radius: 30px;
+ box-shadow: 15px 15px gray;  
+ margin: 70px;
+ padding: 70px;
+ padding-top: 10px;
+ padding-bottom: 10px;
+}
+
+input{
+border-radius: 15px;
+padding: 5px;
+margin: 5px;
+width: 500px;
+height: 40px;
+
+}
+
+button{
+    margin: 20px;
+    padding: 20px;
+}
+
+
 body{
-font-family: "Special Elite", system-ui;
+    background-color:  rgb(38, 96, 255);
+ font-family:"Segoe UI", sans-serif;
   font-weight: 400;
   font-style: normal;
   animation: fadeInAnimation ease 1s;
@@ -51,7 +110,7 @@ font-family: "Special Elite", system-ui;
     left: 0;
     width: 100vw;
     height: 100vh;
-  background-color: #3e0c70;
+  background-color: #0f0f0f;
   z-index: 10000;
   display: flex;
   flex-direction: column;
@@ -100,7 +159,7 @@ border-radius: 50px;
 border: white solid 3px;
 box-shadow: #000000 3px 3px;
 color: white;
-background-color:#3e0c70;
+background-color:#000000;
 margin-left: 160px;
 font-size: 2rem;
  padding: 10px;
@@ -199,6 +258,8 @@ button{
 
 /* CSS */
 button{
+    margin: 30px;
+    padding: 50px;
   appearance: none;
   background-color: transparent;
   border: 2px solid #1A1A1A;
