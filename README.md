@@ -42,12 +42,14 @@ How problematic coding can be, but also how clea css can make your website look,
 You can check out notes.md if you want
 <img src="./src/logo.png">
 
-# VERSON 1 DESIGN
-<img src="./src/Screenshot-(354).png">
 
-# Version 2 design
-<img src="./src/Screenshot-(356).png">
-
-
-# Version 3 design
+# Design
 <img src="./src/Screenshot-(367).png">
+
+
+
+# I made this with the help of: 
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
